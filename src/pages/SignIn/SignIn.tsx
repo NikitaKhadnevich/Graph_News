@@ -19,9 +19,9 @@ import {
   GridError,
 } from './styled';
 
-const SignIn = ({ formik, warningHandler, getFieldName }: SignTypes): JSX.Element => {
+const SignIn = ({ formik, warningHandler }: SignTypes): JSX.Element => {
   const {
-    values: { login, password },
+    values: { email, password },
     handleSubmit,
     handleBlur,
     errors,
@@ -36,17 +36,17 @@ const SignIn = ({ formik, warningHandler, getFieldName }: SignTypes): JSX.Elemen
         <FormBox>
           <ItemsBox component="form" onSubmit={handleSubmit}>
             <GridWrapper container spacing={1}>
-              <GridSignInput onClick={getFieldName} id="login" item xs={12}>
+              <GridSignInput id="email" item xs={12}>
                 <TextField
-                  value={login}
+                  value={email}
                   label="Login"
                   warningHandler={warningHandler}
                   handleBlur={handleBlur}
                   error={errors}
-                  id="login"
+                  id="email"
                 />
               </GridSignInput>
-              <GridSignInput onClick={getFieldName} id="password" item xs={12}>
+              <GridSignInput id="password" item xs={12}>
                 <TextField
                   value={password}
                   label="Password"

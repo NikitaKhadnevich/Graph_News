@@ -10,7 +10,7 @@ interface IAnonymousRoute {
 
 const AnonymousRoute: React.FC<IAnonymousRoute> = ({ children }) => {
   const accessToken = getAuthResponseData();
-  return accessToken ? <Navigate to={PATHS.profile} /> : <>{children}</>;
+  return accessToken ? <Navigate to={PATHS.news} /> : <>{children}</>;
 };
 
 export default AnonymousRoute;

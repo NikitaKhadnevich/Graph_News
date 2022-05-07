@@ -4,14 +4,15 @@ import { useFormik, FormikProvider } from 'formik';
 
 import signInSchema from 'validations/signInValidationSchema';
 import SignIn from './SignIn';
+import getAuth from '../../api/mutations/getAuth';
 
 interface SignInFields {
-  login: string;
+  email: string;
   password: string;
 }
 
 const initSignInvalue: SignInFields = {
-  login: '',
+  email: '',
   password: '',
 };
 
@@ -24,7 +25,7 @@ const SignInContainer: React.FC = () => {
     initialValues: initSignInvalue,
     validationSchema: signInSchema,
     onSubmit: (values): void => {
-      console.log(values);
+      getAuth(values);
     },
   });
 

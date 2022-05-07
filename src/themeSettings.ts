@@ -9,7 +9,6 @@ const COLORS = {
   secondaryTextColor: '#ffffff',
 };
 
-
 const theme = createTheme({
   palette: {
     primary: {

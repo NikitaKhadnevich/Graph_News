@@ -7,15 +7,15 @@ export interface SignTypes {
   };
   value?: string | number;
   fieldValue?: string | number;
-  login?: string;
+  email?: string;
   password?: string | number;
   formik: {
     touched: {
-      login?: boolean;
+      email?: boolean;
       password?: boolean;
     };
     errors: {
-      login?: string;
+      email?: string;
       password?: string;
     };
     handleChange: (e: string) => void;
@@ -24,7 +24,7 @@ export interface SignTypes {
     handleBlur: (e: React.FocusEvent) => void;
     handleSubmit: () => string | unknown;
     values: {
-      login: string;
+      email: string;
       password: string | number;
     };
   };

@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import Cookies from 'js-cookie';
 import { COOKIE_VALUES } from 'constants/authConstants';
 

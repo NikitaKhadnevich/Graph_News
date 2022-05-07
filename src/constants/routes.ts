@@ -1,39 +1,19 @@
 export const PATHS: {
   home: string;
-  profile: string;
-  coursesList: string;
-  myCourses: string;
-  help: string;
+  news: string;
   signIn: string;
-  requests: string;
-  employees: string;
-  skills: string;
-  notFound: string;
-  learnCourse: string;
 } = {
   home: '/',
-  profile: '/profile',
-  coursesList: '/courses-list',
-  myCourses: '/my-courses',
-  help: '/help',
+  news: '/news',
   signIn: '/signin',
-  requests: '/pending-requests',
-  employees: '/employees',
-  skills: '/skills',
-  notFound: '/not-found',
-  learnCourse: '/my-courses/learn',
 };
 
 export const API: {
-  getProfile: string;
   getToken: string;
-  getCourses: string;
-  getMyCourses: string;
+  getData: string;
   logOut: string;
 } = {
-  getProfile: '/api/users',
-  getToken: '/api/account/login',
-  getCourses: 'api/courses',
-  getMyCourses: '/api/clientCourses',
+  getToken: '/api/auth/login',
+  getData: '/v1/graphql',
   logOut: 'api/account/logout',
 };
