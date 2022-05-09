@@ -1,18 +1,34 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { Suspense } from 'react';
+import { LOADER } from 'constants/loaderTypes';
+import Loader from '../../components/Loader';
+import { NewsWrapper } from './styled';
+import NewsBlock from './NewsBlock';
+import { INewsTypes } from '../../types/news';
 
-interface INews {
-  data: any;
+interface INews extends INewsTypes {
+  newsList: Array<{
+    [key: string]: string;
+  }>;
+  loading?: boolean;
+  refetch?: () => void;
 }
 
-const News = ({ data }: INews): JSX.Element => {
-  console.log('data', data);
-
-  return (
-    <div>
-      <p>See news</p>
-    </div>
-  );
-};
-
+const News = ({ warningHandler, formikNews, newsList, loading, refetch }: INews): JSX.Element => (
+  <NewsWrapper>
+    {loading ? (
+      <Loader color="primary" type={LOADER.content} />
+    ) : newsList ? (
+      <NewsBlock
+        warningHandler={warningHandler}
+        formikNews={formikNews}
+        newsList={newsList}
+        refetch={refetch}
+      />
+    ) : null}
+  </NewsWrapper>
+);
 export default News;

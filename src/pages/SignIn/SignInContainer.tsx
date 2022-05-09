@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useFormik, FormikProvider } from 'formik';
@@ -28,6 +29,8 @@ const SignInContainer: React.FC = () => {
       getAuth(values);
     },
   });
+
+  // const data = useGetAuth(formik.values);
 
   const warningHandler = (name: string, e: string) => {
     formik.handleChange(e);

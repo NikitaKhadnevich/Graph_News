@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable prefer-const */
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation, gql } from '@apollo/client';
 import Cookies from 'js-cookie';
 
 import { apiClientWrapper } from 'api/baseInstance';
@@ -24,3 +24,11 @@ const getAuth = async (initialData: any): Promise<Array<[]>> => {
 };
 
 export default getAuth;
+
+export const GET_JWT = gql`
+  mutation get_JWT($input: input) {
+    get_JWT(input: $input) {
+      input
+    }
+  }
+`;

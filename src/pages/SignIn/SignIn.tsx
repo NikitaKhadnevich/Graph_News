@@ -39,7 +39,7 @@ const SignIn = ({ formik, warningHandler }: SignTypes): JSX.Element => {
               <GridSignInput id="email" item xs={12}>
                 <TextField
                   value={email}
-                  label="Login"
+                  label="Email"
                   warningHandler={warningHandler}
                   handleBlur={handleBlur}
                   error={errors}
