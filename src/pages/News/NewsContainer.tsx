@@ -1,21 +1,21 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/return-await */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery, gql } from '@apollo/client';
+import { Button } from '@mui/material';
+import moment from 'moment';
+
 import { useFormik, FormikProvider } from 'formik';
 import { NewsSchema } from 'validations/signInValidationSchema';
 import { GET_ALL_NEWS } from 'api/query/getNews';
-import AddNewsBox from '../../components/AddNewsBox/AddNewsBox';
+import { ADD_FRESH_NEWS } from 'api/mutations/getAuth';
+import AddNewsBoxContainer from '../../components/AddNewsBox/AddNewsBoxContainer';
 
 import News from './News';
-
-interface NewsField {
-  title: string;
-  new_title: string;
-  content: string;
-  new_content: string;
-}
+import { NewsField } from '../../types/formikFields';
 
 const initSignInvalue: NewsField = {
   title: '',
@@ -26,34 +26,14 @@ const initSignInvalue: NewsField = {
 
 const NewsContainer: React.FC = () => {
   const { data, loading, refetch } = useQuery(GET_ALL_NEWS);
-
-  const formikNews = useFormik({
-    initialValues: initSignInvalue,
-    onSubmit: (values, { resetForm }): void => {
-      const mutableValues = {
-        ...values,
-        date: new Date(),
-      };
-      resetForm();
-      console.log('mutableValues', mutableValues);
-    },
-  });
-
-  const warningHandler = (name: string, e: string) => {
-    formikNews.handleChange(e);
-  };
+  const [addFreshNews] = useMutation(ADD_FRESH_NEWS);
+  const [isFreshNews, setFreshNews] = useState<string>('');
 
   return (
-    <FormikProvider value={formikNews}>
-      <AddNewsBox warningHandler={warningHandler} formikNews={formikNews} />
-      <News
-        warningHandler={warningHandler}
-        formikNews={formikNews}
-        newsList={data?.news}
-        loading={loading}
-        refetch={refetch}
-      />
-    </FormikProvider>
+    <>
+      <AddNewsBoxContainer />
+      <News newsList={data?.news} loading={loading} refetch={refetch} />
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ import { NewsWrapper } from './styled';
 import NewsBlock from './NewsBlock';
 import { INewsTypes } from '../../types/news';
 
-interface INews extends INewsTypes {
+interface INews {
   newsList: Array<{
     [key: string]: string;
   }>;
@@ -17,17 +17,12 @@ interface INews extends INewsTypes {
   refetch?: () => void;
 }
 
-const News = ({ warningHandler, formikNews, newsList, loading, refetch }: INews): JSX.Element => (
+const News = ({ newsList, loading, refetch }: INews): JSX.Element => (
   <NewsWrapper>
     {loading ? (
       <Loader color="primary" type={LOADER.content} />
     ) : newsList ? (
-      <NewsBlock
-        warningHandler={warningHandler}
-        formikNews={formikNews}
-        newsList={newsList}
-        refetch={refetch}
-      />
+      <NewsBlock newsList={newsList} refetch={refetch} />
     ) : null}
   </NewsWrapper>
 );

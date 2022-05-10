@@ -15,7 +15,7 @@ const ErrorsMessenger = ({ error, touched }: ITextFieldTypes): JSX.Element => {
   const [keysQueue, setQueue] = useState<string[] | never[]>([]);
   const [fieldKey, setFiledKey] = useState<string | undefined>();
   const FIELD_NAME = {
-    loginField: 'login',
+    loginField: 'email',
     passwordField: 'password',
   };
 

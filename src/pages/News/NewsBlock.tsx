@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/require-default-props */
@@ -21,9 +22,9 @@ import {
   ButtonBox,
   EditTextField,
 } from './styled';
-import { TextField } from '../../components/TextField';
+import EditNewsBoxContainer from '../../components/EditNewsBox/EditNewsBoxContainer';
 
-interface INews extends INewsTypes {
+interface INews {
   newsList: Array<{
     [key: string]: string;
   }>;
@@ -32,19 +33,7 @@ interface INews extends INewsTypes {
   backgroundColor?: string;
 }
 
-export default function NewsBlock({
-  warningHandler,
-  formikNews,
-  newsList,
-  refetch,
-}: INews): JSX.Element {
-  const {
-    values: { title, content },
-    handleSubmit,
-    handleBlur,
-    errors,
-    touched,
-  } = formikNews;
+function NewsBlock({ newsList, refetch, loading }: INews): JSX.Element {
   const [isChange, setChange] = useState<string>('');
 
   const handleApplyCourse = (event: React.MouseEvent<Element, MouseEvent>) => {
@@ -52,12 +41,16 @@ export default function NewsBlock({
     setChange((event.target as HTMLElement).id);
   };
 
+  const openChanger = (): void => {
+    setChange('');
+  };
+
   return (
     <>
       <NewsBlockGrid key="NewsBlockGrid" container>
         {newsList &&
           newsList.map((news) => (
-            <NewsItemBlock key={news.id} item xl={3} md={6} xs={12}>
+            <NewsItemBlock key={news.id} item xl={3} lg={3} md={4} sm={12}>
               <InfoNewsBlock>
                 <TitileText>{news.title}</TitileText>
                 <DescriptionText>{news.content}</DescriptionText>
@@ -68,34 +61,12 @@ export default function NewsBlock({
 
               {isChange === news.id ? (
                 <ChangeInputShow>
-                  <Box component="form" onSubmit={handleSubmit}>
-                    <EditTextField
-                      defaultValue={news.title}
-                      warningHandler={warningHandler}
-                      id="title"
-                    />
-                    <EditTextField
-                      defaultValue={news.content}
-                      warningHandler={warningHandler}
-                      id="content"
-                    />
-                    <ButtonBox>
-                      <ButtonShow type="submit" color="secondary" id={news.id} variant="contained">
-                        Edit
-                      </ButtonShow>
-                      <ButtonShow color="primary" id={news.id} variant="contained">
-                        Delete
-                      </ButtonShow>
-                      <ButtonShow
-                        color="warning"
-                        id={news.id}
-                        onClick={() => setChange('')}
-                        variant="outlined"
-                      >
-                        Hide
-                      </ButtonShow>
-                    </ButtonBox>
-                  </Box>
+                  <EditNewsBoxContainer
+                    loading={loading}
+                    refetch={refetch}
+                    news={news}
+                    openChanger={openChanger}
+                  />
                 </ChangeInputShow>
               ) : (
                 <ChangeInputHide>
@@ -117,3 +88,5 @@ export default function NewsBlock({
     </>
   );
 }
+
+export default React.memo(NewsBlock);

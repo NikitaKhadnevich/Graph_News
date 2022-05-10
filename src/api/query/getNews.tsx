@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const GET_ALL_NEWS = gql`
   query myNews {
-    news(limit: 10) {
+    news(limit: 50) {
       title
       content
       id

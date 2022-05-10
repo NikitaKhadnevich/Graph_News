@@ -28,8 +28,6 @@ const SignIn = ({ formik, warningHandler }: SignTypes): JSX.Element => {
     touched,
   } = formik;
 
-  console.log('values');
-
   return (
     <SignMain>
       <SignWrapper>

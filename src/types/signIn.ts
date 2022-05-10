@@ -1,5 +1,5 @@
 export interface SignTypes {
-  warningHandler: (name: string, e: string) => void;
+  warningHandler?: (name: string, e: string) => void;
   getFieldName?: (event: React.MouseEvent<Element, MouseEvent>) => void;
   getCoordinates?: (event: React.MouseEvent<Element, MouseEvent>) => void;
   labelHandler?: {

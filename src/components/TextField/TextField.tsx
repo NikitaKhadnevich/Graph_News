@@ -10,7 +10,7 @@ import WarningHelper from './styled';
 
 interface TextFieldProps {
   id: string;
-  warningHandler: (name: string, e: string) => void;
+  warningHandler?: (name: string, e: string) => void;
   handleChange?: (e: string) => void;
   setFieldTouched?: (name: string, value?: boolean, isValidate?: boolean) => void;
   label?: string;
@@ -33,6 +33,7 @@ interface TextFieldProps {
 const TextField: React.FC<TextFieldProps> = ({
   id,
   warningHandler,
+  handleChange,
   label,
   children,
   defaultValue,
@@ -48,7 +49,7 @@ const TextField: React.FC<TextFieldProps> = ({
   <>
     <Field
       component={MuiTextField}
-      onChange={warningHandler.bind(null, id)}
+      onChange={warningHandler ? warningHandler.bind(null, id) : handleChange}
       id={id}
       label={label}
       defaultValue={defaultValue}

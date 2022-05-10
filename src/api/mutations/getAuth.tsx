@@ -25,10 +25,11 @@ const getAuth = async (initialData: any): Promise<Array<[]>> => {
 
 export default getAuth;
 
-export const GET_JWT = gql`
-  mutation get_JWT($input: input) {
-    get_JWT(input: $input) {
-      input
+export const ADD_FRESH_NEWS = gql`
+  mutation added_fresh_news($content: String, $title: String) {
+    insert_news_one(object: { title: $title, content: $content }) {
+      content
+      id
     }
   }
 `;
