@@ -12,12 +12,20 @@ interface IColor {
   background?: string;
 }
 
+export const NewsContainerWrapper = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '0px !important',
+  minHeight: '100vh',
+  background: theme.palette.primary.light,
+});
+
 export const NewsWrapper = styled(Box)({
   height: '100%',
   minHeight: 'fit-content',
-  width: '100%',
+  width: '95%',
+  margin: '0 auto',
   padding: '0',
-  background: theme.palette.secondary.main,
 });
 
 export const NewsBlockGrid = styled(Grid)({
@@ -25,19 +33,20 @@ export const NewsBlockGrid = styled(Grid)({
   display: 'grid',
   justifyContent: 'center',
   justifyItems: 'center',
-  background: 'lime',
   gridGap: '20px',
-  backgroundColor: theme.palette.text.secondary,
+  paddingBottom: '20px',
 });
 
 export const NewsItemBlock = styled(Grid)({
   height: 'fit-content !important',
+  padding: '15px',
   minHeight: '100px',
   justifyContent: 'space-between',
   justifyItems: 'center',
-  border: `1px solid ${theme.palette.primary.main}`,
   borderRadius: '7px',
   alignContent: 'space-between',
+  maxWidth: '320px !important',
+  background: theme.palette.primary.dark,
 });
 
 export const InfoNewsBlock = styled(Box)({
@@ -45,8 +54,6 @@ export const InfoNewsBlock = styled(Box)({
   flexDirection: 'column',
   justifyContent: 'start',
   height: '120px',
-  overflow: 'hidden',
-  boxShadow: '0px -24px 20px -13px rgba(0, 0, 0, 1) inset;',
 });
 
 export const DateNewsBlock = styled('div')({
@@ -55,7 +62,6 @@ export const DateNewsBlock = styled('div')({
   justifyContent: 'space-between',
   alignSelf: 'end',
   height: '30px',
-  background: 'black',
 });
 
 export const EditTextField = styled(TextField)({
@@ -94,23 +100,22 @@ export const EditTextField = styled(TextField)({
 });
 
 export const TitileText = styled(Typography)({
-  padding: '5px',
   fontSize: '16px !important',
   wordWrap: 'break-word',
   height: '25px',
 });
 
 export const DescriptionText = styled(Typography)({
-  padding: '10px 5px 5px 5px',
-  fontSize: '14px !important',
+  fontSize: '12px !important',
   wordWrap: 'break-word',
+  overflow: 'hidden',
 });
 
 export const TimeText = styled(Typography)({
   padding: '10px 3px 3px 5px',
-  fontSize: '10px !important',
+  fontSize: '8px !important',
   wordWrap: 'break-word',
-  color: theme.palette.text.secondary,
+  color: theme.palette.text.primary,
 });
 
 export const ChangeInputShow = styled(Box)({
@@ -120,7 +125,6 @@ export const ChangeInputShow = styled(Box)({
   width: '100%',
   justifyContent: 'space-between !important',
   marginLeft: '-30px !important important',
-  background: 'black',
 });
 
 export const ChangeInputHide = styled(Box)({
@@ -128,7 +132,6 @@ export const ChangeInputHide = styled(Box)({
   display: 'flex',
   width: '100%',
   justifyContent: 'space-between !important',
-  background: 'black',
 });
 
 export const ButtonBox = styled(Box)({
@@ -147,67 +150,4 @@ export const ButtonShow = styled(Button)<IColor>(({ color }) => ({
   ...(color && {
     backgroundColor: `${color} !important`,
   }),
-}));
-
-const GridSignInput = styled(Grid)<IColor>(({ color }) => ({
-  margin: '0 !important ',
-  padding: '0px !important',
-  boxSizing: 'border-box',
-  marginBottom: '25px !important',
-  height: '53px !important',
-  maxHeight: '53px !important',
-  minHeight: '53px !important',
-  '& label': {
-    fontFamily: '"Ubuntu", sans-serif',
-    color: '#C6C6C9 !important',
-    ...(color && {
-      color: `${color} !important`,
-    }),
-    fontSize: '18px',
-    lineHeight: '21px',
-    fontWeight: 400,
-    height: '53px !important',
-    maxHeight: '53px !important',
-    minHeight: '53px !important',
-  },
-  '& input': {
-    fontSize: '18px',
-    fontWeight: 400,
-    fontFamily: '"Ubuntu", sans-serif',
-    padding: '13.57px 14px',
-    color: '#1D1D1D',
-    background: '#E5EEFD',
-    borderRadius: '5px',
-  },
-  '& input + fieldset': {
-    border: '1px solid #B7BECA !important',
-    borderColor: '1px solid #B7BECA !important',
-  },
-  '& input:focus + fieldset': {
-    borderColor: '#B7BECA !important',
-    border: '1px solid #B7BECA !important',
-  },
-  '& input:hover + fieldset': {
-    borderColor: '#B7BECA !important',
-    border: '1px solid #B7BECA !important',
-  },
-  [theme.breakpoints.down('xs')]: {
-    boxSizing: 'border-box',
-    width: '100%',
-    height: '48px !important',
-    maxHeight: '48px !important',
-    minHeight: '48px !important',
-    '& label': {
-      height: '48px !important',
-      maxHeight: '48px !important',
-      minHeight: '48px !important',
-    },
-    '& input': {
-      width: '100%',
-      boxSizing: 'border-box',
-      height: '48px !important',
-      maxHeight: '48px !important',
-      minHeight: '48px !important',
-    },
-  },
 }));

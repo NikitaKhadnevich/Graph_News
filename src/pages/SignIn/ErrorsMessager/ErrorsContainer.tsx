@@ -1,15 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 
+import ITextFieldTypes from 'types/signErrorTypes';
 import ErrorsMessager from './ErrorsMessenger';
-
-export interface ITextFieldTypes {
-  error: {
-    login?: string;
-    password?: string;
-  };
-  touched: Record<string, boolean | undefined>;
-}
 
 const ErrorsMessenger = ({ error, touched }: ITextFieldTypes): JSX.Element => {
   const [keysQueue, setQueue] = useState<string[] | never[]>([]);

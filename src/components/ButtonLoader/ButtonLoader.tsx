@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { ReactFragment } from 'react';
 import { Typography } from '@mui/material';
 

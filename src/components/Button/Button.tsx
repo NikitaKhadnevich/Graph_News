@@ -7,7 +7,7 @@ declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     medium: true;
     contained: true;
-    outlined: true;
+    mediumContained: true;
     large: true;
   }
 }

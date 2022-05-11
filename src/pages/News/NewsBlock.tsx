@@ -1,13 +1,9 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable react/require-default-props */
-
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { Zoom } from '@material-ui/core';
 import { LOADER } from 'constants/loaderTypes';
-import { INewsTypes } from '../../types/news';
+import cutNewsContent from 'utils/helpers/cutNewsContent';
+import EditNewsBoxContainer from 'components/EditNewsBox/EditNewsBoxContainer';
+import { INewsMain } from '../../types/news';
 import {
   NewsBlockGrid,
   NewsItemBlock,
@@ -21,19 +17,9 @@ import {
   ButtonShow,
   ButtonBox,
 } from './styled';
-import EditNewsBoxContainer from '../../components/EditNewsBox/EditNewsBoxContainer';
 import Loader from '../../components/Loader';
 
-interface INews {
-  newsList: Array<{
-    [key: string]: string;
-  }>;
-  loading?: boolean;
-  refetch: () => void;
-  backgroundColor?: string;
-}
-
-function NewsBlock({ newsList, refetch, loading }: INews): JSX.Element {
+function NewsBlock({ newsList, refetch, loading }: INewsMain): JSX.Element {
   const [isChange, setChange] = useState<string>('');
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -63,16 +49,15 @@ function NewsBlock({ newsList, refetch, loading }: INews): JSX.Element {
         <NewsBlockGrid key="NewsBlockGrid" container>
           {newsList &&
             newsList.map((news) => (
-              <NewsItemBlock key={news.id} item xl={3} lg={3} md={4} sm={12}>
+              <NewsItemBlock key={news.id} item xl={3} lg={4} md={6} sm={12}>
                 <InfoNewsBlock>
                   <TitileText>{news.title}</TitileText>
-                  <DescriptionText>{news.content}</DescriptionText>
+                  <DescriptionText>{cutNewsContent(news.content, 150)}...</DescriptionText>
                 </InfoNewsBlock>
                 <DateNewsBlock>
                   <TimeText>Added {moment(news.created_at).format('llll')}</TimeText>
                   <TimeText>Updated {moment(news.updated_at).format('lll')}</TimeText>
                 </DateNewsBlock>
-
                 {isChange === news.id ? (
                   <ChangeInputShow>
                     <EditNewsBoxContainer

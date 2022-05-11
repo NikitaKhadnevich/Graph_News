@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/require-default-props */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Box } from '@material-ui/core';
 
 import { ButtonShow, ButtonBox, EditTextField } from './styled';
@@ -15,8 +13,12 @@ interface INews extends INewsTypes {
   loading?: boolean;
   refetch?: () => void;
   openChanger: () => void;
-  updateNews: (e: any, title: string, content: string) => Promise<void>;
-  deleteNews: (e: any) => Promise<void>;
+  updateNews: (
+    e: React.MouseEvent<Element, MouseEvent>,
+    title: string,
+    content: string,
+  ) => Promise<void>;
+  deleteNews: (e: React.MouseEvent<Element, MouseEvent>) => Promise<void>;
 }
 
 const EditNewsBox = ({ news, formikNews, openChanger, deleteNews, updateNews }: INews) => {

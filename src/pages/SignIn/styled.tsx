@@ -12,7 +12,7 @@ const SignMain = styled(Box)({
   flexDirection: 'row',
   justifyContent: 'center',
   padding: '0',
-  background: theme.palette.secondary.main,
+  background: theme.palette.primary.light,
 });
 
 const SignWrapper = styled(Box)({
@@ -74,7 +74,7 @@ const GridSignInput = styled(Grid)<IColor>(({ color }) => ({
   minHeight: '53px !important',
   '& label': {
     fontFamily: '"Ubuntu", sans-serif',
-    color: '#C6C6C9 !important',
+    color: 'rgb(100 100 100) !important',
     ...(color && {
       color: `${color} !important`,
     }),
@@ -159,6 +159,9 @@ const SignButton = styled(Button)({
     fontSize: '16px !important',
     fontWeight: '400 !important',
     letterSpacing: '0.2px !important',
+  },
+  '&:hover': {
+    color: `${theme.palette.primary.main} !important`,
   },
 });
 

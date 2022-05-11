@@ -12,7 +12,7 @@ interface IColor {
 }
 
 export const AddNewsMainBox = styled(Box)({
-  width: '80%',
+  width: '77%',
   margin: '0 auto',
   marginTop: '20px',
   marginBottom: '20px',
@@ -66,4 +66,7 @@ export const ButtonShow = styled(Button)<IColor>(({ color }) => ({
   ...(color && {
     backgroundColor: `${color} !important`,
   }),
+  '&:hover': {
+    color: `${theme.palette.primary.main} !important`,
+  },
 }));

@@ -37,4 +37,5 @@ export interface SignTypes {
   classes?: {
     [key: string]: string | undefined;
   };
+  isAuthing?: boolean;
 }

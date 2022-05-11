@@ -56,3 +56,12 @@ export interface INewsHelper {
   openChanger: () => void;
   isFetchingAction: (loader: boolean) => void;
 }
+
+export interface INewsMain {
+  newsList: Array<{
+    [key: string]: string;
+  }>;
+  loading?: boolean;
+  refetch: () => void;
+  backgroundColor?: string;
+}

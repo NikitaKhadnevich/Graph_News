@@ -1,20 +1,12 @@
-/* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { LOADER } from 'constants/loaderTypes';
-import Loader from '../../components/Loader';
+import Loader from 'components/Loader';
 import { NewsWrapper } from './styled';
+import { INewsMain } from '../../types/news';
 import NewsBlock from './NewsBlock';
 
-interface INews {
-  newsList: Array<{
-    [key: string]: string;
-  }>;
-  loading?: boolean;
-  refetch: () => void;
-}
-
-const News = ({ newsList, loading, refetch }: INews): JSX.Element => (
+const News = ({ newsList, loading, refetch }: INewsMain): JSX.Element => (
   <NewsWrapper>
     {loading ? (
       <Loader color="primary" type={LOADER.content} />

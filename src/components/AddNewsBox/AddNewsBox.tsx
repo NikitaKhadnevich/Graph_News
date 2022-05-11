@@ -1,18 +1,10 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable react/require-default-props */
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { Box } from '@material-ui/core';
 
 import { ButtonShow, ButtonBox, AddNewsMainBox, AddTextField } from './styled';
 import { INewsTypes } from '../../types/news';
 
-interface INews extends INewsTypes {
-  loading?: boolean;
-}
-
-const AddNewsBox = ({ formikNews }: INews) => {
+const AddNewsBox = ({ formikNews }: INewsTypes) => {
   const {
     values: { new_title, new_content },
     handleSubmit,
@@ -30,7 +22,12 @@ const AddNewsBox = ({ formikNews }: INews) => {
           label="Content"
         />
         <ButtonBox>
-          <ButtonShow type="submit" color="primary" variant="contained">
+          <ButtonShow
+            type="submit"
+            color="primary"
+            variant="contained"
+            disabled={!new_title || !new_content}
+          >
             Add
           </ButtonShow>
         </ButtonBox>

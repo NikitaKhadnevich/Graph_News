@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignInContainer from 'pages/SignIn/SignInContainer';
 
+import SignInContainer from 'pages/SignIn/SignInContainer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import AnonymousRoute from 'components/AnonymousRoute/AnonymousRoute';
 import NewsContainer from 'pages/News/NewsContainer';

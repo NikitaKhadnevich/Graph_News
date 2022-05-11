@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable react/jsx-no-bind */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/jsx-no-bind */
 import React, { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 
@@ -19,9 +19,9 @@ const initSignInvalue: NewsField = {
 };
 
 const EditNewsBoxContainer = ({ refetch, news, openChanger, isFetchingAction }: INewsHelper) => {
-  const [deleteCurrentNews, { data: dataDelete, loading: loadingDelete, error: errorDelete }] =
+  const [deleteCurrentNews, { loading: loadingDelete, error: errorDelete }] =
     useMutation(DELETE_CURRENT_NEWS);
-  const [updateCurrentNews, { data: dataUpdate, loading: loadingUpdate, error: errorUpdate }] =
+  const [updateCurrentNews, { loading: loadingUpdate, error: errorUpdate }] =
     useMutation(UPDATE_CURRENT_NEWS);
 
   async function updateNews(
@@ -32,12 +32,16 @@ const EditNewsBoxContainer = ({ refetch, news, openChanger, isFetchingAction }: 
     e.preventDefault();
     const updated_at = new Date();
     const { id } = e.target as HTMLElement;
+    let truthyTitle;
+    let truthyContent;
+    title.length !== 0 ? (truthyTitle = title) : (truthyTitle = news.title);
+    content.length !== 0 ? (truthyContent = content) : (truthyContent = news.content);
     try {
       await updateCurrentNews({
         variables: {
           id,
-          title,
-          content,
+          title: truthyTitle,
+          content: truthyContent,
           updated_at,
         },
       });

@@ -1,5 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
 
 import { TextField } from 'components/TextField';
 import { SignTypes } from 'types/signIn';
@@ -19,7 +19,7 @@ import {
   GridError,
 } from './styled';
 
-const SignIn = ({ formik, warningHandler }: SignTypes): JSX.Element => {
+const SignIn = ({ formik, warningHandler, isAuthing }: SignTypes): JSX.Element => {
   const {
     values: { email, password },
     handleSubmit,
@@ -59,15 +59,15 @@ const SignIn = ({ formik, warningHandler }: SignTypes): JSX.Element => {
                 <ErrorsMessenger error={errors} touched={touched} />
               </GridError>
               <GridButton item xs={12}>
-                {/* {isLoading ? (
+                {isAuthing ? (
                   <SignButton fullWidth type="submit" variant="outlined" disabled>
                     <ButtonLoader buttonSpinner={buttonSpinner} />
                   </SignButton>
-                ) : ( */}
-                <SignButton fullWidth type="submit" variant="contained" color="primary">
-                  LOG IN
-                </SignButton>
-                {/* )} */}
+                ) : (
+                  <SignButton fullWidth type="submit" variant="contained" color="primary">
+                    LOG IN
+                  </SignButton>
+                )}
               </GridButton>
             </GridWrapper>
           </ItemsBox>

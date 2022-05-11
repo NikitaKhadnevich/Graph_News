@@ -8,6 +8,7 @@ interface ICookiesTypes {
 const REQUEST_ERRORS: IRequestErrors = {
   getError: 'Smth went wrong - 404',
   postError: 'Smth went wrong - 500',
+  noUser: 'There is no User Exist',
 };
 
 const COOKIE_VALUES: ICookiesTypes = {

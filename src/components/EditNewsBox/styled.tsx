@@ -63,4 +63,7 @@ export const ButtonShow = styled(Button)<IColor>(({ color }) => ({
   ...(color && {
     backgroundColor: `${color} !important`,
   }),
+  '&:hover': {
+    color: `${theme.palette.primary.main} !important`,
+  },
 }));

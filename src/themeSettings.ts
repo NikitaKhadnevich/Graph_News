@@ -3,7 +3,8 @@ import { createTheme } from '@mui/material';
 const COLORS = {
   primaryColor: '#d43e41',
   secondaryColor: '#ffffff',
-  darkColor: '#942b2d',
+  lightColor: '#ffd7cd',
+  darkColor: '#ffefe5',
   disabledTextColor: '#9b9b9b',
   primaryTextColor: '#000000',
   secondaryTextColor: '#ffffff',
@@ -14,6 +15,7 @@ const theme = createTheme({
     primary: {
       main: COLORS.primaryColor,
       dark: COLORS.darkColor,
+      light: COLORS.lightColor,
     },
     secondary: {
       main: COLORS.secondaryColor,

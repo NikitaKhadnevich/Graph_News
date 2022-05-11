@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/require-default-props */
-import React, { useEffect, useState } from 'react';
-import { Box } from '@material-ui/core';
-
-import { useMutation, useQuery, gql } from '@apollo/client';
-import { Button } from '@mui/material';
-import moment from 'moment';
+/* eslint-disable react/react-in-jsx-scope */
+import { useMutation } from '@apollo/client';
 
 import { useFormik, FormikProvider } from 'formik';
 import { ADD_FRESH_NEWS } from 'api/mutations/actionsWithNews';
@@ -30,7 +24,7 @@ interface INews {
 }
 
 const AddNewsBoxContainer = ({ refetch }: INews) => {
-  const [addFreshNews, { data, loading, error }] = useMutation(ADD_FRESH_NEWS);
+  const [addFreshNews, { loading, error: addNewsError }] = useMutation(ADD_FRESH_NEWS);
 
   async function addedNews(title: string, content: string) {
     try {
@@ -40,9 +34,9 @@ const AddNewsBoxContainer = ({ refetch }: INews) => {
           content,
         },
       });
-      await refetch();
+      refetch();
     } catch (err) {
-      console.log('We have some error on Added News');
+      console.log(addNewsError);
     }
   }
 
@@ -57,7 +51,6 @@ const AddNewsBoxContainer = ({ refetch }: INews) => {
         title: mutableValues.new_title,
         content: mutableValues.new_content,
       };
-
       addedNews(freshNews.title, freshNews.content);
       resetForm();
     },
