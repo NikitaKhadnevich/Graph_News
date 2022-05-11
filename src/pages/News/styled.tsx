@@ -14,16 +14,14 @@ interface IColor {
 
 export const NewsWrapper = styled(Box)({
   height: '100%',
-  minHeight: '100vh',
+  minHeight: 'fit-content',
   width: '100%',
-  display: 'grid',
   padding: '0',
   background: theme.palette.secondary.main,
 });
 
 export const NewsBlockGrid = styled(Grid)({
   height: '100%',
-  width: '100%',
   display: 'grid',
   justifyContent: 'center',
   justifyItems: 'center',
@@ -34,8 +32,7 @@ export const NewsBlockGrid = styled(Grid)({
 
 export const NewsItemBlock = styled(Grid)({
   height: 'fit-content !important',
-  minHeight: '150px',
-  width: '100%',
+  minHeight: '100px',
   justifyContent: 'space-between',
   justifyItems: 'center',
   border: `1px solid ${theme.palette.primary.main}`,
@@ -46,16 +43,19 @@ export const NewsItemBlock = styled(Grid)({
 export const InfoNewsBlock = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between',
+  justifyContent: 'start',
   height: '120px',
   overflow: 'hidden',
+  boxShadow: '0px -24px 20px -13px rgba(0, 0, 0, 1) inset;',
 });
 
 export const DateNewsBlock = styled('div')({
-  display: 'block',
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'space-between',
   alignSelf: 'end',
-  background: 'red',
   height: '30px',
+  background: 'black',
 });
 
 export const EditTextField = styled(TextField)({
@@ -97,6 +97,7 @@ export const TitileText = styled(Typography)({
   padding: '5px',
   fontSize: '16px !important',
   wordWrap: 'break-word',
+  height: '25px',
 });
 
 export const DescriptionText = styled(Typography)({
@@ -106,9 +107,10 @@ export const DescriptionText = styled(Typography)({
 });
 
 export const TimeText = styled(Typography)({
-  padding: '15px 5px 5px 5px',
+  padding: '10px 3px 3px 5px',
   fontSize: '10px !important',
   wordWrap: 'break-word',
+  color: theme.palette.text.secondary,
 });
 
 export const ChangeInputShow = styled(Box)({
@@ -118,6 +120,7 @@ export const ChangeInputShow = styled(Box)({
   width: '100%',
   justifyContent: 'space-between !important',
   marginLeft: '-30px !important important',
+  background: 'black',
 });
 
 export const ChangeInputHide = styled(Box)({
@@ -125,6 +128,7 @@ export const ChangeInputHide = styled(Box)({
   display: 'flex',
   width: '100%',
   justifyContent: 'space-between !important',
+  background: 'black',
 });
 
 export const ButtonBox = styled(Box)({

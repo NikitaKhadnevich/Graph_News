@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unused-prop-types */
@@ -10,8 +11,10 @@ import { Button } from '@mui/material';
 import moment from 'moment';
 
 import { useFormik, FormikProvider } from 'formik';
-import { ADD_FRESH_NEWS } from 'api/mutations/getAuth';
+import { ADD_FRESH_NEWS } from 'api/mutations/actionsWithNews';
+import { LOADER } from 'constants/loaderTypes';
 import AddNewsBox from './AddNewsBox';
+import Loader from '../Loader';
 import { NewsField } from '../../types/formikFields';
 
 const initSignInvalue: NewsField = {
@@ -23,11 +26,11 @@ const initSignInvalue: NewsField = {
 
 interface INews {
   loading?: boolean;
-  refetch?: () => void;
+  refetch: () => void;
 }
 
-const AddNewsBoxContainer = ({ loading, refetch }: INews) => {
-  const [addFreshNews] = useMutation(ADD_FRESH_NEWS);
+const AddNewsBoxContainer = ({ refetch }: INews) => {
+  const [addFreshNews, { data, loading, error }] = useMutation(ADD_FRESH_NEWS);
 
   async function addedNews(title: string, content: string) {
     try {
@@ -37,7 +40,8 @@ const AddNewsBoxContainer = ({ loading, refetch }: INews) => {
           content,
         },
       });
-    } catch (error) {
+      await refetch();
+    } catch (err) {
       console.log('We have some error on Added News');
     }
   }
@@ -61,7 +65,11 @@ const AddNewsBoxContainer = ({ loading, refetch }: INews) => {
 
   return (
     <FormikProvider value={formikNews}>
-      <AddNewsBox formikNews={formikNews} />;
+      {loading ? (
+        <Loader color="primary" type={LOADER.content} />
+      ) : (
+        <AddNewsBox formikNews={formikNews} />
+      )}
     </FormikProvider>
   );
 };

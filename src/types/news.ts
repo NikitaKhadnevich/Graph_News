@@ -46,3 +46,13 @@ export interface INewsTypes {
     [key: string]: string | undefined;
   };
 }
+
+export interface INewsHelper {
+  news: {
+    [key: string]: string;
+  };
+  loading?: boolean;
+  refetch: () => void;
+  openChanger: () => void;
+  isFetchingAction: (loader: boolean) => void;
+}

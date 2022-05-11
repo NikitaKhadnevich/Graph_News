@@ -15,7 +15,6 @@
         "plugin:promise/recommended",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        // "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:import/typescript",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
@@ -49,6 +48,15 @@
       "react/button-has-type": [0],
       "promise/param-names": "error",
       "promise/no-return-in-finally": "warn",
+      "eslint-disable react/jsx-no-bind": "off",
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          "selector": "variable",
+          "modifiers": ["destructured"],
+          "format": null
+        }
+      ],
       "prettier/prettier": "error"
     }
 }

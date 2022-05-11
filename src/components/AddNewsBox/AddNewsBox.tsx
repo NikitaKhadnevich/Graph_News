@@ -10,7 +10,6 @@ import { INewsTypes } from '../../types/news';
 
 interface INews extends INewsTypes {
   loading?: boolean;
-  refetch?: () => void;
 }
 
 const AddNewsBox = ({ formikNews }: INews) => {

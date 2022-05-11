@@ -1,20 +1,17 @@
 /* eslint-disable react/require-default-props */
-/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { Suspense } from 'react';
+import React from 'react';
 import { LOADER } from 'constants/loaderTypes';
 import Loader from '../../components/Loader';
 import { NewsWrapper } from './styled';
 import NewsBlock from './NewsBlock';
-import { INewsTypes } from '../../types/news';
 
 interface INews {
   newsList: Array<{
     [key: string]: string;
   }>;
   loading?: boolean;
-  refetch?: () => void;
+  refetch: () => void;
 }
 
 const News = ({ newsList, loading, refetch }: INews): JSX.Element => (
@@ -22,7 +19,7 @@ const News = ({ newsList, loading, refetch }: INews): JSX.Element => (
     {loading ? (
       <Loader color="primary" type={LOADER.content} />
     ) : newsList ? (
-      <NewsBlock newsList={newsList} refetch={refetch} />
+      <NewsBlock newsList={newsList} refetch={refetch} loading={loading} />
     ) : null}
   </NewsWrapper>
 );
