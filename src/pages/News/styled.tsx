@@ -102,7 +102,7 @@ export const EditTextField = styled(TextField)({
 export const TitileText = styled(Typography)({
   fontSize: '16px !important',
   wordWrap: 'break-word',
-  height: '25px',
+  height: '50px',
 });
 
 export const DescriptionText = styled(Typography)({
